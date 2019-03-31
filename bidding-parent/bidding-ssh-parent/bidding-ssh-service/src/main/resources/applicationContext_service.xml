@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+    <bean id="userService" class="com.suchuner.bidding.service.impl.UserService">
+        <property name="userDao" ref="userDao"/>
+        <property name="jedis" ref="jedis"/>
+        <property name="BIDDING_SYSTEM_USER_EXPIRE" value="${BIDDING_SYSTEM_USER_EXPIRE}"/>
+    </bean>
+    <bean id="supplierService" class="com.suchuner.bidding.service.impl.SupplierService">
+        <property name="supplierDao" ref="supplierDao"/>
+        <property name="mailSender" ref="mailSender"/>
+        <property name="emailAccount" value="${BIDDING.EMAIL.ACCOUNT}"/>
+        <property name="jedis" ref="jedis"/>
+        <property name="BIDDING_SYSTEM_USER_EXPIRE" value="${BIDDING_SYSTEM_USER_EXPIRE}"/>
+    </bean>
+    <bean id="expertService" class="com.suchuner.bidding.service.impl.ExpertService">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="emailAccount" value="${BIDDING.EMAIL.ACCOUNT}"/>
+        <property name="expertDao" ref="expertDao"/>
+        <property name="BIDDING_SYSTEM_USER_EXPIRE" value="${BIDDING_SYSTEM_USER_EXPIRE}"/>
+        <property name="jedis" ref="jedis"/>
+    </bean>
+</beans>
+	

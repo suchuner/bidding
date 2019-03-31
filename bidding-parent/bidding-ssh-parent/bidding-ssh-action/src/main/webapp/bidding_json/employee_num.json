@@ -1,0 +1,9 @@
+[
+{"_employee_num_value":"-","_employee_num":"---请选择---","selected":true},
+{"_employee_num_value":0,"_employee_num":"1-9人"},
+{"_employee_num_value":1,"_employee_num":"10-49人"},
+{"_employee_num_value":2,"_employee_num":"50-99人"},
+{"_employee_num_value":3,"_employee_num":"100-499人"},
+{"_employee_num_value":4,"_employee_num":"500-999人"},
+{"_employee_num_value":5,"_employee_num":"1000人以上"}
+]

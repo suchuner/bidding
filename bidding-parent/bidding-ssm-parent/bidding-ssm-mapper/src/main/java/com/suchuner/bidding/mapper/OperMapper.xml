@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suchuner.bidding.mapper.OperMapper" >
+  <resultMap id="BaseResultMap" type="com.suchuner.bidding.pojo.Oper" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="operName" property="opername" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="oper_id" property="operId" jdbcType="BIGINT" />
+    <result column="operItemName" property="operitemname" jdbcType="VARCHAR" />
+    <result column="operItem_id" property="operitemId" jdbcType="BIGINT" />
+    <result column="operDate" property="operdate" jdbcType="TIMESTAMP" />
+    <result column="types" property="types" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, operName, operator, oper_id, operItemName, operItem_id, operDate, types
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.suchuner.bidding.pojo.OperExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from oper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from oper
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from oper
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.suchuner.bidding.pojo.OperExample" >
+    delete from oper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.suchuner.bidding.pojo.Oper" >
+    insert into oper (id, operName, operator, 
+      oper_id, operItemName, operItem_id, 
+      operDate, types)
+    values (#{id,jdbcType=BIGINT}, #{opername,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{operId,jdbcType=BIGINT}, #{operitemname,jdbcType=VARCHAR}, #{operitemId,jdbcType=BIGINT}, 
+      #{operdate,jdbcType=TIMESTAMP}, #{types,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suchuner.bidding.pojo.Oper" >
+    insert into oper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="opername != null" >
+        operName,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="operId != null" >
+        oper_id,
+      </if>
+      <if test="operitemname != null" >
+        operItemName,
+      </if>
+      <if test="operitemId != null" >
+        operItem_id,
+      </if>
+      <if test="operdate != null" >
+        operDate,
+      </if>
+      <if test="types != null" >
+        types,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="opername != null" >
+        #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        #{operId,jdbcType=BIGINT},
+      </if>
+      <if test="operitemname != null" >
+        #{operitemname,jdbcType=VARCHAR},
+      </if>
+      <if test="operitemId != null" >
+        #{operitemId,jdbcType=BIGINT},
+      </if>
+      <if test="operdate != null" >
+        #{operdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="types != null" >
+        #{types,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.suchuner.bidding.pojo.OperExample" resultType="java.lang.Integer" >
+    select count(*) from oper
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update oper
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.opername != null" >
+        operName = #{record.opername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operator != null" >
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operId != null" >
+        oper_id = #{record.operId,jdbcType=BIGINT},
+      </if>
+      <if test="record.operitemname != null" >
+        operItemName = #{record.operitemname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operitemId != null" >
+        operItem_id = #{record.operitemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.operdate != null" >
+        operDate = #{record.operdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.types != null" >
+        types = #{record.types,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update oper
+    set id = #{record.id,jdbcType=BIGINT},
+      operName = #{record.opername,jdbcType=VARCHAR},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      oper_id = #{record.operId,jdbcType=BIGINT},
+      operItemName = #{record.operitemname,jdbcType=VARCHAR},
+      operItem_id = #{record.operitemId,jdbcType=BIGINT},
+      operDate = #{record.operdate,jdbcType=TIMESTAMP},
+      types = #{record.types,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suchuner.bidding.pojo.Oper" >
+    update oper
+    <set >
+      <if test="opername != null" >
+        operName = #{opername,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        oper_id = #{operId,jdbcType=BIGINT},
+      </if>
+      <if test="operitemname != null" >
+        operItemName = #{operitemname,jdbcType=VARCHAR},
+      </if>
+      <if test="operitemId != null" >
+        operItem_id = #{operitemId,jdbcType=BIGINT},
+      </if>
+      <if test="operdate != null" >
+        operDate = #{operdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="types != null" >
+        types = #{types,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suchuner.bidding.pojo.Oper" >
+    update oper
+    set operName = #{opername,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      oper_id = #{operId,jdbcType=BIGINT},
+      operItemName = #{operitemname,jdbcType=VARCHAR},
+      operItem_id = #{operitemId,jdbcType=BIGINT},
+      operDate = #{operdate,jdbcType=TIMESTAMP},
+      types = #{types,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

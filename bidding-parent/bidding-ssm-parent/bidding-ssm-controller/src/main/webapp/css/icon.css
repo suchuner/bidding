@@ -1,0 +1,27 @@
+.icon-16-lock {
+    background: url("../images/icon-16-lock.png") 0 32px transparent;
+}
+.icon-16-download {
+    background: url("../images/icon-16-export.png") 0 32px transparent;
+}
+.icon-16-user {
+    background: url("../images/icon_16_user.png") no-repeat transparent;
+}
+.icon-16-suppliers {
+    background: url("../images/icon_16_suppliers.png") no-repeat transparent;
+}
+.icon-16-login {
+    background: url("../images/icon_16_login.png") no-repeat transparent;
+}
+.icon-16-logout {
+    background: url("../images/icon_16_logout.png") no-repeat transparent;
+}
+.icon-16-register {
+    background: url("../images/icon_16_add_user.png") no-repeat transparent;
+}
+.icon-16-help {
+    background: url("../images/icon_16_help.png") no-repeat transparent;
+}
+.icon-16-sitemap {
+    background: url("../images/icon_16_sitemap.png") no-repeat transparent;
+}

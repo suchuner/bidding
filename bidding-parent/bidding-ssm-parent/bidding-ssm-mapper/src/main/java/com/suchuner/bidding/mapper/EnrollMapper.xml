@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suchuner.bidding.mapper.EnrollMapper" >
+  <resultMap id="BaseResultMap" type="com.suchuner.bidding.pojo.Enroll" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="pjt_id" property="pjtId" jdbcType="BIGINT" />
+    <result column="sup_id" property="supId" jdbcType="BIGINT" />
+    <result column="enrollDate" property="enrolldate" jdbcType="DATE" />
+    <result column="crediter_id" property="crediterId" jdbcType="BIGINT" />
+    <result column="checkDate" property="checkdate" jdbcType="DATE" />
+    <result column="isNormal" property="isnormal" jdbcType="TINYINT" />
+    <result column="isEnroll" property="isenroll" jdbcType="TINYINT" />
+    <result column="islegal" property="islegal" jdbcType="TINYINT" />
+    <result column="legalDoc" property="legaldoc" jdbcType="VARCHAR" />
+    <result column="isTax" property="istax" jdbcType="TINYINT" />
+    <result column="taxDoc" property="taxdoc" jdbcType="VARCHAR" />
+    <result column="isSocialInsurance" property="issocialinsurance" jdbcType="TINYINT" />
+    <result column="siDoc" property="sidoc" jdbcType="VARCHAR" />
+    <association column="pjt_id" property="project"  resultMap="project"/>
+    <association column="sup_id" property="supplier" resultMap="supplier" />
+  </resultMap>
+  <resultMap id="project" type="com.suchuner.bidding.pojo.Project">
+    <id column="pjt_id" property="id" jdbcType="BIGINT" />
+    <result column="projectNum" property="projectnum" jdbcType="VARCHAR" />
+    <result column="itemName" property="itemname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="supplier" type="com.suchuner.bidding.pojo.Supplier">
+    <id column="sup_id" property="id" jdbcType="BIGINT" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="shortName" property="shortname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pjt_id, sup_id, enrollDate, crediter_id, checkDate, isNormal, isEnroll, islegal, 
+    legalDoc, isTax, taxDoc, isSocialInsurance, siDoc
+  </sql>
+  <sql id="my_column_list">
+    enroll.id, enroll.pjt_id, enroll.sup_id, enroll.enrollDate, enroll.crediter_id, enroll.checkDate, enroll.isNormal, enroll.isEnroll, enroll.islegal,
+    enroll.legalDoc, enroll.isTax, enroll.taxDoc, enroll.isSocialInsurance, enroll.siDoc, p.id, p.projectNum, p.itemName,s.id,s.companyName, s.shortName
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.suchuner.bidding.pojo.EnrollExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="my_column_list" />
+    from project p inner join  enroll  on p.id =enroll.pjt_id inner join supplier s on enroll.sup_id = s.id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from enroll
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from enroll
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.suchuner.bidding.pojo.EnrollExample" >
+    delete from enroll
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.suchuner.bidding.pojo.Enroll" >
+    insert into enroll (id, pjt_id, sup_id, 
+      enrollDate, crediter_id, checkDate, 
+      isNormal, isEnroll, islegal, 
+      legalDoc, isTax, taxDoc, 
+      isSocialInsurance, siDoc)
+    values (#{id,jdbcType=BIGINT}, #{pjtId,jdbcType=BIGINT}, #{supId,jdbcType=BIGINT}, 
+      #{enrolldate,jdbcType=DATE}, #{crediterId,jdbcType=BIGINT}, #{checkdate,jdbcType=DATE}, 
+      #{isnormal,jdbcType=TINYINT}, #{isenroll,jdbcType=TINYINT}, #{islegal,jdbcType=TINYINT}, 
+      #{legaldoc,jdbcType=VARCHAR}, #{istax,jdbcType=TINYINT}, #{taxdoc,jdbcType=VARCHAR}, 
+      #{issocialinsurance,jdbcType=TINYINT}, #{sidoc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suchuner.bidding.pojo.Enroll" >
+    insert into enroll
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pjtId != null" >
+        pjt_id,
+      </if>
+      <if test="supId != null" >
+        sup_id,
+      </if>
+      <if test="enrolldate != null" >
+        enrollDate,
+      </if>
+      <if test="crediterId != null" >
+        crediter_id,
+      </if>
+      <if test="checkdate != null" >
+        checkDate,
+      </if>
+      <if test="isnormal != null" >
+        isNormal,
+      </if>
+      <if test="isenroll != null" >
+        isEnroll,
+      </if>
+      <if test="islegal != null" >
+        islegal,
+      </if>
+      <if test="legaldoc != null" >
+        legalDoc,
+      </if>
+      <if test="istax != null" >
+        isTax,
+      </if>
+      <if test="taxdoc != null" >
+        taxDoc,
+      </if>
+      <if test="issocialinsurance != null" >
+        isSocialInsurance,
+      </if>
+      <if test="sidoc != null" >
+        siDoc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pjtId != null" >
+        #{pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="supId != null" >
+        #{supId,jdbcType=BIGINT},
+      </if>
+      <if test="enrolldate != null" >
+        #{enrolldate,jdbcType=DATE},
+      </if>
+      <if test="crediterId != null" >
+        #{crediterId,jdbcType=BIGINT},
+      </if>
+      <if test="checkdate != null" >
+        #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="isnormal != null" >
+        #{isnormal,jdbcType=TINYINT},
+      </if>
+      <if test="isenroll != null" >
+        #{isenroll,jdbcType=TINYINT},
+      </if>
+      <if test="islegal != null" >
+        #{islegal,jdbcType=TINYINT},
+      </if>
+      <if test="legaldoc != null" >
+        #{legaldoc,jdbcType=VARCHAR},
+      </if>
+      <if test="istax != null" >
+        #{istax,jdbcType=TINYINT},
+      </if>
+      <if test="taxdoc != null" >
+        #{taxdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="issocialinsurance != null" >
+        #{issocialinsurance,jdbcType=TINYINT},
+      </if>
+      <if test="sidoc != null" >
+        #{sidoc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.suchuner.bidding.pojo.EnrollExample" resultType="java.lang.Integer" >
+    select count(*) from enroll
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update enroll
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.pjtId != null" >
+        pjt_id = #{record.pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="record.supId != null" >
+        sup_id = #{record.supId,jdbcType=BIGINT},
+      </if>
+      <if test="record.enrolldate != null" >
+        enrollDate = #{record.enrolldate,jdbcType=DATE},
+      </if>
+      <if test="record.crediterId != null" >
+        crediter_id = #{record.crediterId,jdbcType=BIGINT},
+      </if>
+      <if test="record.checkdate != null" >
+        checkDate = #{record.checkdate,jdbcType=DATE},
+      </if>
+      <if test="record.isnormal != null" >
+        isNormal = #{record.isnormal,jdbcType=TINYINT},
+      </if>
+      <if test="record.isenroll != null" >
+        isEnroll = #{record.isenroll,jdbcType=TINYINT},
+      </if>
+      <if test="record.islegal != null" >
+        islegal = #{record.islegal,jdbcType=TINYINT},
+      </if>
+      <if test="record.legaldoc != null" >
+        legalDoc = #{record.legaldoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.istax != null" >
+        isTax = #{record.istax,jdbcType=TINYINT},
+      </if>
+      <if test="record.taxdoc != null" >
+        taxDoc = #{record.taxdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issocialinsurance != null" >
+        isSocialInsurance = #{record.issocialinsurance,jdbcType=TINYINT},
+      </if>
+      <if test="record.sidoc != null" >
+        siDoc = #{record.sidoc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update enroll
+    set id = #{record.id,jdbcType=BIGINT},
+      pjt_id = #{record.pjtId,jdbcType=BIGINT},
+      sup_id = #{record.supId,jdbcType=BIGINT},
+      enrollDate = #{record.enrolldate,jdbcType=DATE},
+      crediter_id = #{record.crediterId,jdbcType=BIGINT},
+      checkDate = #{record.checkdate,jdbcType=DATE},
+      isNormal = #{record.isnormal,jdbcType=TINYINT},
+      isEnroll = #{record.isenroll,jdbcType=TINYINT},
+      islegal = #{record.islegal,jdbcType=TINYINT},
+      legalDoc = #{record.legaldoc,jdbcType=VARCHAR},
+      isTax = #{record.istax,jdbcType=TINYINT},
+      taxDoc = #{record.taxdoc,jdbcType=VARCHAR},
+      isSocialInsurance = #{record.issocialinsurance,jdbcType=TINYINT},
+      siDoc = #{record.sidoc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suchuner.bidding.pojo.Enroll" >
+    update enroll
+    <set >
+      <if test="pjtId != null" >
+        pjt_id = #{pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="supId != null" >
+        sup_id = #{supId,jdbcType=BIGINT},
+      </if>
+      <if test="enrolldate != null" >
+        enrollDate = #{enrolldate,jdbcType=DATE},
+      </if>
+      <if test="crediterId != null" >
+        crediter_id = #{crediterId,jdbcType=BIGINT},
+      </if>
+      <if test="checkdate != null" >
+        checkDate = #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="isnormal != null" >
+        isNormal = #{isnormal,jdbcType=TINYINT},
+      </if>
+      <if test="isenroll != null" >
+        isEnroll = #{isenroll,jdbcType=TINYINT},
+      </if>
+      <if test="islegal != null" >
+        islegal = #{islegal,jdbcType=TINYINT},
+      </if>
+      <if test="legaldoc != null" >
+        legalDoc = #{legaldoc,jdbcType=VARCHAR},
+      </if>
+      <if test="istax != null" >
+        isTax = #{istax,jdbcType=TINYINT},
+      </if>
+      <if test="taxdoc != null" >
+        taxDoc = #{taxdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="issocialinsurance != null" >
+        isSocialInsurance = #{issocialinsurance,jdbcType=TINYINT},
+      </if>
+      <if test="sidoc != null" >
+        siDoc = #{sidoc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suchuner.bidding.pojo.Enroll" >
+    update enroll
+    set pjt_id = #{pjtId,jdbcType=BIGINT},
+      sup_id = #{supId,jdbcType=BIGINT},
+      enrollDate = #{enrolldate,jdbcType=DATE},
+      crediter_id = #{crediterId,jdbcType=BIGINT},
+      checkDate = #{checkdate,jdbcType=DATE},
+      isNormal = #{isnormal,jdbcType=TINYINT},
+      isEnroll = #{isenroll,jdbcType=TINYINT},
+      islegal = #{islegal,jdbcType=TINYINT},
+      legalDoc = #{legaldoc,jdbcType=VARCHAR},
+      isTax = #{istax,jdbcType=TINYINT},
+      taxDoc = #{taxdoc,jdbcType=VARCHAR},
+      isSocialInsurance = #{issocialinsurance,jdbcType=TINYINT},
+      siDoc = #{sidoc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

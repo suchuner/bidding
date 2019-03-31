@@ -1,0 +1,20 @@
+/*------------------- Define the search Table's style ---------------------*/
+.tb_searchbar {
+	BACKGROUND: #C6D5F5;BORDER-RIGHT: D4D4D4 1px solid;  BORDER-TOP: D4D4D4 1px solid;   BORDER-LEFT: D4D4D4 1px solid; WIDTH: 100% ;  
+}
+.tb_searchbar TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px;BACKGROUND: #ffffff;  PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.tb_searchbar .td_title {
+	BORDER-TOP: white 1px solid; BACKGROUND: #EAF0FB; BORDER-LEFT: white 1px solid; TEXT-ALIGN:RIGHT;
+}
+
+.tb_searchbar_leng {
+	BACKGROUND: #C6D5F5;BORDER-RIGHT: D4D4D4 1px solid;  BORDER-TOP: D4D4D4 1px solid;   BORDER-LEFT: D4D4D4 1px solid; WIDTH: 130% ;  
+}
+.tb_searchbar_leng TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px;BACKGROUND: #ffffff;  PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+.tb_searchbar_leng .td_title {
+	BORDER-TOP: white 1px solid; BACKGROUND: #EAF0FB; BORDER-LEFT: white 1px solid; TEXT-ALIGN:RIGHT;
+}

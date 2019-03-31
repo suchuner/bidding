@@ -1,0 +1,11 @@
+[
+{"_comp_nature_value":"-","_comp_nature":"---请选择---","selected":true},
+{"_comp_nature_value":0,"_comp_nature":"国有企业"},
+{"_comp_nature_value":1,"_comp_nature":"中外合作企业"},
+{"_comp_nature_value":2,"_comp_nature":"中外合资企业"},
+{"_comp_nature_value":3,"_comp_nature":"外商独资企业"},
+{"_comp_nature_value":4,"_comp_nature":"集体企业"},
+{"_comp_nature_value":5,"_comp_nature":"私人企业"},
+{"_comp_nature_value":6,"_comp_nature":"个体工商户"},
+{"_comp_nature_value":7,"_comp_nature":"其他企业"}
+]

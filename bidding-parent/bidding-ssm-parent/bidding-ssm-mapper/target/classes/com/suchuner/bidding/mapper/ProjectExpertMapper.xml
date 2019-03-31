@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suchuner.bidding.mapper.ProjectExpertMapper" >
+  <resultMap id="BaseResultMap" type="com.suchuner.bidding.pojo.ProjectExpert" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="pjt_id" property="pjtId" jdbcType="BIGINT" />
+    <result column="judge_1_id" property="judge1Id" jdbcType="BIGINT" />
+    <result column="judge_2_id" property="judge2Id" jdbcType="BIGINT" />
+    <result column="judge_3_id" property="judge3Id" jdbcType="BIGINT" />
+    <result column="judge_4_id" property="judge4Id" jdbcType="BIGINT" />
+    <result column="judge_5_id" property="judge5Id" jdbcType="BIGINT" />
+    <result column="judge_6_id" property="judge6Id" jdbcType="BIGINT" />
+    <result column="judge_7_id" property="judge7Id" jdbcType="BIGINT" />
+    <result column="judge_8_id" property="judge8Id" jdbcType="BIGINT" />
+    <result column="judge_9_id" property="judge9Id" jdbcType="BIGINT" />
+    <association column="pjt_id" property="project" resultMap="project" />
+  </resultMap>
+  <resultMap id="project" type="com.suchuner.bidding.pojo.Project">
+    <id column="pjt_id" property="id" jdbcType="BIGINT" />
+    <result column="projectNum" property="projectnum" jdbcType="VARCHAR" />
+    <result column="itemName" property="itemname" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="biddingDoc" property="biddingdoc" jdbcType="VARCHAR" />
+    <result column="buyListAndReqDoc" property="buylistandreqdoc" jdbcType="VARCHAR" />
+    <result column="biddingRequireDoc" property="biddingrequiredoc" jdbcType="VARCHAR" />
+    <result column="otherDoc" property="otherdoc" jdbcType="VARCHAR" />
+    <result column="isBegin" property="isbegin" jdbcType="TINYINT" />
+    <result column="reportDoc" property="reportdoc" jdbcType="VARCHAR" />
+    <result column="isRebidding" property="isrebidding" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pjt_id, judge_1_id, judge_2_id, judge_3_id, judge_4_id, judge_5_id, judge_6_id, 
+    judge_7_id, judge_8_id, judge_9_id
+  </sql>
+  <sql id="my_column_list" >
+    pe.id, pe.pjt_id, pe.judge_1_id, pe.judge_2_id, pe.judge_3_id, pe.judge_4_id, pe.judge_5_id, pe.judge_6_id,
+    pe.judge_7_id, pe.judge_8_id, pe.judge_9_id,p.id, p.projectNum, p.itemName, p.introduction, p.status, p.biddingDoc, p.buyListAndReqDoc,
+    p.biddingRequireDoc, p.otherDoc, p.isBegin, p.isRebidding
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.suchuner.bidding.pojo.ProjectExpertExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="my_column_list" />
+    from project_expert pe inner join project p on pe.pjt_id=p.id
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_expert
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from project_expert
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.suchuner.bidding.pojo.ProjectExpertExample" >
+    delete from project_expert
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.suchuner.bidding.pojo.ProjectExpert" >
+    insert into project_expert (id, pjt_id, judge_1_id, 
+      judge_2_id, judge_3_id, judge_4_id, 
+      judge_5_id, judge_6_id, judge_7_id, 
+      judge_8_id, judge_9_id)
+    values (#{id,jdbcType=BIGINT}, #{pjtId,jdbcType=BIGINT}, #{judge1Id,jdbcType=BIGINT}, 
+      #{judge2Id,jdbcType=BIGINT}, #{judge3Id,jdbcType=BIGINT}, #{judge4Id,jdbcType=BIGINT}, 
+      #{judge5Id,jdbcType=BIGINT}, #{judge6Id,jdbcType=BIGINT}, #{judge7Id,jdbcType=BIGINT}, 
+      #{judge8Id,jdbcType=BIGINT}, #{judge9Id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suchuner.bidding.pojo.ProjectExpert" >
+    insert into project_expert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pjtId != null" >
+        pjt_id,
+      </if>
+      <if test="judge1Id != null" >
+        judge_1_id,
+      </if>
+      <if test="judge2Id != null" >
+        judge_2_id,
+      </if>
+      <if test="judge3Id != null" >
+        judge_3_id,
+      </if>
+      <if test="judge4Id != null" >
+        judge_4_id,
+      </if>
+      <if test="judge5Id != null" >
+        judge_5_id,
+      </if>
+      <if test="judge6Id != null" >
+        judge_6_id,
+      </if>
+      <if test="judge7Id != null" >
+        judge_7_id,
+      </if>
+      <if test="judge8Id != null" >
+        judge_8_id,
+      </if>
+      <if test="judge9Id != null" >
+        judge_9_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pjtId != null" >
+        #{pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="judge1Id != null" >
+        #{judge1Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge2Id != null" >
+        #{judge2Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge3Id != null" >
+        #{judge3Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge4Id != null" >
+        #{judge4Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge5Id != null" >
+        #{judge5Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge6Id != null" >
+        #{judge6Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge7Id != null" >
+        #{judge7Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge8Id != null" >
+        #{judge8Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge9Id != null" >
+        #{judge9Id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.suchuner.bidding.pojo.ProjectExpertExample" resultType="java.lang.Integer" >
+    select count(*) from project_expert
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update project_expert
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.pjtId != null" >
+        pjt_id = #{record.pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge1Id != null" >
+        judge_1_id = #{record.judge1Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge2Id != null" >
+        judge_2_id = #{record.judge2Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge3Id != null" >
+        judge_3_id = #{record.judge3Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge4Id != null" >
+        judge_4_id = #{record.judge4Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge5Id != null" >
+        judge_5_id = #{record.judge5Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge6Id != null" >
+        judge_6_id = #{record.judge6Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge7Id != null" >
+        judge_7_id = #{record.judge7Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge8Id != null" >
+        judge_8_id = #{record.judge8Id,jdbcType=BIGINT},
+      </if>
+      <if test="record.judge9Id != null" >
+        judge_9_id = #{record.judge9Id,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update project_expert
+    set id = #{record.id,jdbcType=BIGINT},
+      pjt_id = #{record.pjtId,jdbcType=BIGINT},
+      judge_1_id = #{record.judge1Id,jdbcType=BIGINT},
+      judge_2_id = #{record.judge2Id,jdbcType=BIGINT},
+      judge_3_id = #{record.judge3Id,jdbcType=BIGINT},
+      judge_4_id = #{record.judge4Id,jdbcType=BIGINT},
+      judge_5_id = #{record.judge5Id,jdbcType=BIGINT},
+      judge_6_id = #{record.judge6Id,jdbcType=BIGINT},
+      judge_7_id = #{record.judge7Id,jdbcType=BIGINT},
+      judge_8_id = #{record.judge8Id,jdbcType=BIGINT},
+      judge_9_id = #{record.judge9Id,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suchuner.bidding.pojo.ProjectExpert" >
+    update project_expert
+    <set >
+      <if test="pjtId != null" >
+        pjt_id = #{pjtId,jdbcType=BIGINT},
+      </if>
+      <if test="judge1Id != null" >
+        judge_1_id = #{judge1Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge2Id != null" >
+        judge_2_id = #{judge2Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge3Id != null" >
+        judge_3_id = #{judge3Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge4Id != null" >
+        judge_4_id = #{judge4Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge5Id != null" >
+        judge_5_id = #{judge5Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge6Id != null" >
+        judge_6_id = #{judge6Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge7Id != null" >
+        judge_7_id = #{judge7Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge8Id != null" >
+        judge_8_id = #{judge8Id,jdbcType=BIGINT},
+      </if>
+      <if test="judge9Id != null" >
+        judge_9_id = #{judge9Id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suchuner.bidding.pojo.ProjectExpert" >
+    update project_expert
+    set pjt_id = #{pjtId,jdbcType=BIGINT},
+      judge_1_id = #{judge1Id,jdbcType=BIGINT},
+      judge_2_id = #{judge2Id,jdbcType=BIGINT},
+      judge_3_id = #{judge3Id,jdbcType=BIGINT},
+      judge_4_id = #{judge4Id,jdbcType=BIGINT},
+      judge_5_id = #{judge5Id,jdbcType=BIGINT},
+      judge_6_id = #{judge6Id,jdbcType=BIGINT},
+      judge_7_id = #{judge7Id,jdbcType=BIGINT},
+      judge_8_id = #{judge8Id,jdbcType=BIGINT},
+      judge_9_id = #{judge9Id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

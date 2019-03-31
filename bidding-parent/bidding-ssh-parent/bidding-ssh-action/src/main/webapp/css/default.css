@@ -1,0 +1,5 @@
+body {scrollbar-face-color: #d8ecff;scrollbar-highlight-color: #f8f7f9;scrollbar-shadow-color: #98ccff;scrollbar-3dlight-color: #98ccff;scrollbar-arrow-color: #98ccff;scrollbar-darkshadow-color: #fff;}
+.footer{text-align:center;color:#15428B; margin:0px; padding:0px;line-height:23px; font-weight:bold;}
+#bigimage { position:absolute; display:none; }
+#bigimage img { width:250px; height:250px; padding:5px; background:#fff; border:1px solid #e3e3e3; }
+

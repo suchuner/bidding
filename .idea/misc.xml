@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/bidding-parent/bidding-ssh-parent/bidding-ssh-action" />
+    <file type="web" url="file://$PROJECT_DIR$/bidding-parent/bidding-ssm-parent/bidding-ssm-controller" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/bidding-parent/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/bidding-parent/bidding-ssm-parent/bidding-ssm-controller/src/main/webapp/WEB-INF/jsp/enroll/addEnrollPage.jsp" />
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://code.alibabatech.com/schema/dubbo" location="C:/devSoftware/zookeeper-3.4.13/dubbo/dubbo.xsd" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suchuner.bidding.mapper.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.suchuner.bidding.pojo.Supplier" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="busEmail" property="busemail" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="linkMan" property="linkman" jdbcType="VARCHAR" />
+    <result column="linkManEmail" property="linkmanemail" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="checkMan" property="checkman" jdbcType="BIGINT" />
+    <result column="checkDate" property="checkdate" jdbcType="DATE" />
+    <result column="checkInfo" property="checkinfo" jdbcType="VARCHAR" />
+    <result column="bizLicRegNum" property="bizlicregnum" jdbcType="VARCHAR" />
+    <result column="bizLicEndDate" property="bizlicenddate" jdbcType="DATE" />
+    <result column="bizLicDoc" property="bizlicdoc" jdbcType="VARCHAR" />
+    <result column="taxRegNum" property="taxregnum" jdbcType="VARCHAR" />
+    <result column="taxRegEndDate" property="taxregenddate" jdbcType="DATE" />
+    <result column="taxRegDoc" property="taxregdoc" jdbcType="VARCHAR" />
+    <result column="orgCode" property="orgcode" jdbcType="VARCHAR" />
+    <result column="orgCodeEndDate" property="orgcodeenddate" jdbcType="DATE" />
+    <result column="orgCodeDoc" property="orgcodedoc" jdbcType="VARCHAR" />
+    <result column="isAlive" property="isalive" jdbcType="INTEGER" />
+    <result column="isNormal" property="isnormal" jdbcType="INTEGER" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="shortName" property="shortname" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+    <result column="regfund" property="regfund" jdbcType="BIGINT" />
+    <result column="lawPerson" property="lawperson" jdbcType="VARCHAR" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="startDate" property="startdate" jdbcType="DATE" />
+    <result column="callNum" property="callnum" jdbcType="VARCHAR" />
+    <result column="companyEmail" property="companyemail" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="empNums" property="empnums" jdbcType="INTEGER" />
+    <result column="frame" property="frame" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, busEmail, password, linkMan, linkManEmail, phone, checkMan, checkDate, checkInfo, 
+    bizLicRegNum, bizLicEndDate, bizLicDoc, taxRegNum, taxRegEndDate, taxRegDoc, orgCode, 
+    orgCodeEndDate, orgCodeDoc, isAlive, isNormal, companyName, shortName, address, introduction, 
+    regfund, lawPerson, idCard, startDate, callNum, companyEmail, website, typeid, empNums, 
+    frame
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.suchuner.bidding.pojo.SupplierExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from supplier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from supplier
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.suchuner.bidding.pojo.SupplierExample" >
+    delete from supplier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.suchuner.bidding.pojo.Supplier" >
+    insert into supplier (id, busEmail, password, 
+      linkMan, linkManEmail, phone, 
+      checkMan, checkDate, checkInfo, 
+      bizLicRegNum, bizLicEndDate, bizLicDoc, 
+      taxRegNum, taxRegEndDate, taxRegDoc, 
+      orgCode, orgCodeEndDate, orgCodeDoc, 
+      isAlive, isNormal, companyName, 
+      shortName, address, introduction, 
+      regfund, lawPerson, idCard, 
+      startDate, callNum, companyEmail, 
+      website, typeid, empNums, 
+      frame)
+    values (#{id,jdbcType=BIGINT}, #{busemail,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{linkmanemail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{checkman,jdbcType=BIGINT}, #{checkdate,jdbcType=DATE}, #{checkinfo,jdbcType=VARCHAR}, 
+      #{bizlicregnum,jdbcType=VARCHAR}, #{bizlicenddate,jdbcType=DATE}, #{bizlicdoc,jdbcType=VARCHAR}, 
+      #{taxregnum,jdbcType=VARCHAR}, #{taxregenddate,jdbcType=DATE}, #{taxregdoc,jdbcType=VARCHAR}, 
+      #{orgcode,jdbcType=VARCHAR}, #{orgcodeenddate,jdbcType=DATE}, #{orgcodedoc,jdbcType=VARCHAR}, 
+      #{isalive,jdbcType=INTEGER}, #{isnormal,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, 
+      #{shortname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{regfund,jdbcType=BIGINT}, #{lawperson,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=DATE}, #{callnum,jdbcType=VARCHAR}, #{companyemail,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{empnums,jdbcType=INTEGER}, 
+      #{frame,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suchuner.bidding.pojo.Supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="busemail != null" >
+        busEmail,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="linkman != null" >
+        linkMan,
+      </if>
+      <if test="linkmanemail != null" >
+        linkManEmail,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="checkman != null" >
+        checkMan,
+      </if>
+      <if test="checkdate != null" >
+        checkDate,
+      </if>
+      <if test="checkinfo != null" >
+        checkInfo,
+      </if>
+      <if test="bizlicregnum != null" >
+        bizLicRegNum,
+      </if>
+      <if test="bizlicenddate != null" >
+        bizLicEndDate,
+      </if>
+      <if test="bizlicdoc != null" >
+        bizLicDoc,
+      </if>
+      <if test="taxregnum != null" >
+        taxRegNum,
+      </if>
+      <if test="taxregenddate != null" >
+        taxRegEndDate,
+      </if>
+      <if test="taxregdoc != null" >
+        taxRegDoc,
+      </if>
+      <if test="orgcode != null" >
+        orgCode,
+      </if>
+      <if test="orgcodeenddate != null" >
+        orgCodeEndDate,
+      </if>
+      <if test="orgcodedoc != null" >
+        orgCodeDoc,
+      </if>
+      <if test="isalive != null" >
+        isAlive,
+      </if>
+      <if test="isnormal != null" >
+        isNormal,
+      </if>
+      <if test="companyname != null" >
+        companyName,
+      </if>
+      <if test="shortname != null" >
+        shortName,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="introduction != null" >
+        introduction,
+      </if>
+      <if test="regfund != null" >
+        regfund,
+      </if>
+      <if test="lawperson != null" >
+        lawPerson,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="startdate != null" >
+        startDate,
+      </if>
+      <if test="callnum != null" >
+        callNum,
+      </if>
+      <if test="companyemail != null" >
+        companyEmail,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="empnums != null" >
+        empNums,
+      </if>
+      <if test="frame != null" >
+        frame,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="busemail != null" >
+        #{busemail,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanemail != null" >
+        #{linkmanemail,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkman != null" >
+        #{checkman,jdbcType=BIGINT},
+      </if>
+      <if test="checkdate != null" >
+        #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="checkinfo != null" >
+        #{checkinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizlicregnum != null" >
+        #{bizlicregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bizlicenddate != null" >
+        #{bizlicenddate,jdbcType=DATE},
+      </if>
+      <if test="bizlicdoc != null" >
+        #{bizlicdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="taxregnum != null" >
+        #{taxregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="taxregenddate != null" >
+        #{taxregenddate,jdbcType=DATE},
+      </if>
+      <if test="taxregdoc != null" >
+        #{taxregdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcodeenddate != null" >
+        #{orgcodeenddate,jdbcType=DATE},
+      </if>
+      <if test="orgcodedoc != null" >
+        #{orgcodedoc,jdbcType=VARCHAR},
+      </if>
+      <if test="isalive != null" >
+        #{isalive,jdbcType=INTEGER},
+      </if>
+      <if test="isnormal != null" >
+        #{isnormal,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname != null" >
+        #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="regfund != null" >
+        #{regfund,jdbcType=BIGINT},
+      </if>
+      <if test="lawperson != null" >
+        #{lawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="callnum != null" >
+        #{callnum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyemail != null" >
+        #{companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="empnums != null" >
+        #{empnums,jdbcType=INTEGER},
+      </if>
+      <if test="frame != null" >
+        #{frame,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.suchuner.bidding.pojo.SupplierExample" resultType="java.lang.Integer" >
+    select count(*) from supplier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update supplier
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.busemail != null" >
+        busEmail = #{record.busemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman != null" >
+        linkMan = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkmanemail != null" >
+        linkManEmail = #{record.linkmanemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkman != null" >
+        checkMan = #{record.checkman,jdbcType=BIGINT},
+      </if>
+      <if test="record.checkdate != null" >
+        checkDate = #{record.checkdate,jdbcType=DATE},
+      </if>
+      <if test="record.checkinfo != null" >
+        checkInfo = #{record.checkinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizlicregnum != null" >
+        bizLicRegNum = #{record.bizlicregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bizlicenddate != null" >
+        bizLicEndDate = #{record.bizlicenddate,jdbcType=DATE},
+      </if>
+      <if test="record.bizlicdoc != null" >
+        bizLicDoc = #{record.bizlicdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxregnum != null" >
+        taxRegNum = #{record.taxregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxregenddate != null" >
+        taxRegEndDate = #{record.taxregenddate,jdbcType=DATE},
+      </if>
+      <if test="record.taxregdoc != null" >
+        taxRegDoc = #{record.taxregdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgcode != null" >
+        orgCode = #{record.orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgcodeenddate != null" >
+        orgCodeEndDate = #{record.orgcodeenddate,jdbcType=DATE},
+      </if>
+      <if test="record.orgcodedoc != null" >
+        orgCodeDoc = #{record.orgcodedoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isalive != null" >
+        isAlive = #{record.isalive,jdbcType=INTEGER},
+      </if>
+      <if test="record.isnormal != null" >
+        isNormal = #{record.isnormal,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyname != null" >
+        companyName = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shortname != null" >
+        shortName = #{record.shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduction != null" >
+        introduction = #{record.introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regfund != null" >
+        regfund = #{record.regfund,jdbcType=BIGINT},
+      </if>
+      <if test="record.lawperson != null" >
+        lawPerson = #{record.lawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        idCard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startdate != null" >
+        startDate = #{record.startdate,jdbcType=DATE},
+      </if>
+      <if test="record.callnum != null" >
+        callNum = #{record.callnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyemail != null" >
+        companyEmail = #{record.companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.website != null" >
+        website = #{record.website,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeid != null" >
+        typeid = #{record.typeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.empnums != null" >
+        empNums = #{record.empnums,jdbcType=INTEGER},
+      </if>
+      <if test="record.frame != null" >
+        frame = #{record.frame,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update supplier
+    set id = #{record.id,jdbcType=BIGINT},
+      busEmail = #{record.busemail,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      linkMan = #{record.linkman,jdbcType=VARCHAR},
+      linkManEmail = #{record.linkmanemail,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      checkMan = #{record.checkman,jdbcType=BIGINT},
+      checkDate = #{record.checkdate,jdbcType=DATE},
+      checkInfo = #{record.checkinfo,jdbcType=VARCHAR},
+      bizLicRegNum = #{record.bizlicregnum,jdbcType=VARCHAR},
+      bizLicEndDate = #{record.bizlicenddate,jdbcType=DATE},
+      bizLicDoc = #{record.bizlicdoc,jdbcType=VARCHAR},
+      taxRegNum = #{record.taxregnum,jdbcType=VARCHAR},
+      taxRegEndDate = #{record.taxregenddate,jdbcType=DATE},
+      taxRegDoc = #{record.taxregdoc,jdbcType=VARCHAR},
+      orgCode = #{record.orgcode,jdbcType=VARCHAR},
+      orgCodeEndDate = #{record.orgcodeenddate,jdbcType=DATE},
+      orgCodeDoc = #{record.orgcodedoc,jdbcType=VARCHAR},
+      isAlive = #{record.isalive,jdbcType=INTEGER},
+      isNormal = #{record.isnormal,jdbcType=INTEGER},
+      companyName = #{record.companyname,jdbcType=VARCHAR},
+      shortName = #{record.shortname,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
+      regfund = #{record.regfund,jdbcType=BIGINT},
+      lawPerson = #{record.lawperson,jdbcType=VARCHAR},
+      idCard = #{record.idcard,jdbcType=VARCHAR},
+      startDate = #{record.startdate,jdbcType=DATE},
+      callNum = #{record.callnum,jdbcType=VARCHAR},
+      companyEmail = #{record.companyemail,jdbcType=VARCHAR},
+      website = #{record.website,jdbcType=VARCHAR},
+      typeid = #{record.typeid,jdbcType=INTEGER},
+      empNums = #{record.empnums,jdbcType=INTEGER},
+      frame = #{record.frame,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suchuner.bidding.pojo.Supplier" >
+    update supplier
+    <set >
+      <if test="busemail != null" >
+        busEmail = #{busemail,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkMan = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanemail != null" >
+        linkManEmail = #{linkmanemail,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkman != null" >
+        checkMan = #{checkman,jdbcType=BIGINT},
+      </if>
+      <if test="checkdate != null" >
+        checkDate = #{checkdate,jdbcType=DATE},
+      </if>
+      <if test="checkinfo != null" >
+        checkInfo = #{checkinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizlicregnum != null" >
+        bizLicRegNum = #{bizlicregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bizlicenddate != null" >
+        bizLicEndDate = #{bizlicenddate,jdbcType=DATE},
+      </if>
+      <if test="bizlicdoc != null" >
+        bizLicDoc = #{bizlicdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="taxregnum != null" >
+        taxRegNum = #{taxregnum,jdbcType=VARCHAR},
+      </if>
+      <if test="taxregenddate != null" >
+        taxRegEndDate = #{taxregenddate,jdbcType=DATE},
+      </if>
+      <if test="taxregdoc != null" >
+        taxRegDoc = #{taxregdoc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null" >
+        orgCode = #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcodeenddate != null" >
+        orgCodeEndDate = #{orgcodeenddate,jdbcType=DATE},
+      </if>
+      <if test="orgcodedoc != null" >
+        orgCodeDoc = #{orgcodedoc,jdbcType=VARCHAR},
+      </if>
+      <if test="isalive != null" >
+        isAlive = #{isalive,jdbcType=INTEGER},
+      </if>
+      <if test="isnormal != null" >
+        isNormal = #{isnormal,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="shortname != null" >
+        shortName = #{shortname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="regfund != null" >
+        regfund = #{regfund,jdbcType=BIGINT},
+      </if>
+      <if test="lawperson != null" >
+        lawPerson = #{lawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null" >
+        startDate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="callnum != null" >
+        callNum = #{callnum,jdbcType=VARCHAR},
+      </if>
+      <if test="companyemail != null" >
+        companyEmail = #{companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="empnums != null" >
+        empNums = #{empnums,jdbcType=INTEGER},
+      </if>
+      <if test="frame != null" >
+        frame = #{frame,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suchuner.bidding.pojo.Supplier" >
+    update supplier
+    set busEmail = #{busemail,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      linkMan = #{linkman,jdbcType=VARCHAR},
+      linkManEmail = #{linkmanemail,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      checkMan = #{checkman,jdbcType=BIGINT},
+      checkDate = #{checkdate,jdbcType=DATE},
+      checkInfo = #{checkinfo,jdbcType=VARCHAR},
+      bizLicRegNum = #{bizlicregnum,jdbcType=VARCHAR},
+      bizLicEndDate = #{bizlicenddate,jdbcType=DATE},
+      bizLicDoc = #{bizlicdoc,jdbcType=VARCHAR},
+      taxRegNum = #{taxregnum,jdbcType=VARCHAR},
+      taxRegEndDate = #{taxregenddate,jdbcType=DATE},
+      taxRegDoc = #{taxregdoc,jdbcType=VARCHAR},
+      orgCode = #{orgcode,jdbcType=VARCHAR},
+      orgCodeEndDate = #{orgcodeenddate,jdbcType=DATE},
+      orgCodeDoc = #{orgcodedoc,jdbcType=VARCHAR},
+      isAlive = #{isalive,jdbcType=INTEGER},
+      isNormal = #{isnormal,jdbcType=INTEGER},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      shortName = #{shortname,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      regfund = #{regfund,jdbcType=BIGINT},
+      lawPerson = #{lawperson,jdbcType=VARCHAR},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      startDate = #{startdate,jdbcType=DATE},
+      callNum = #{callnum,jdbcType=VARCHAR},
+      companyEmail = #{companyemail,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      typeid = #{typeid,jdbcType=INTEGER},
+      empNums = #{empnums,jdbcType=INTEGER},
+      frame = #{frame,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

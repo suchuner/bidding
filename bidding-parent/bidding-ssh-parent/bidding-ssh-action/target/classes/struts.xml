@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="4097152" />
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 定义全局的result结果 -->
+<!--		<global-results>
+			<result name="exception" >/exception/exception.jsp</result>
+		</global-results>-->
+		<!-- 定义全局异常映射处理 -->
+<!--		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>-->
+	<action name="user_*" class="userAction" method="{1}">
+		<result name="toLoginPage">Wisdom/user/logo.htm</result>
+		<result name="importUserPage">/WEB-INF/jsp/importSystemUser/importUser.jsp</result>
+	</action>
+	<action name="supplier_*" class="supplierAction" method="{1}">
+		<interceptor-ref name="defaultStack">
+        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔-->
+ 	<!-- <param name="fileUpload.allowedExtensions">jpg,jpeg</param>-->
+        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔 -->
+      <param name="fileUpload.allowedTypes">image/jpeg</param>
+     </interceptor-ref>
+		<result name="toLoginPage">/website/login.jsp</result>
+		<result name="toMyInfoPage">WEB-INF/jsp/myInfo_supplier.jsp</result>
+		<result name="toDoSuplierCheckPage">/WEB-INF/jsp/supplier.jsp</result>
+	</action>
+	<action name="expert_*" class="expertAction" method="{1}">
+		<result name="importExpertPage">/WEB-INF/jsp/importSystemUser/importExpert.jsp</result>
+		<result name="toLoginPage">/website/logo.jsp</result>
+		<result name="toMyInfoPage">WEB-INF/jsp/myInfo_expert.jsp</result>
+
+	</action>
+		<action name="download_*" class="downloadAction" method="{1}">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+				<!-- 指定下载文件的缓存大小1024*4 -->
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+	</package>
+</struts>
