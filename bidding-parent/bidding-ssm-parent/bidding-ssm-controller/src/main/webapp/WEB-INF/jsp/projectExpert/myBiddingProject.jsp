@@ -83,34 +83,34 @@
             }
         ]];
         var _columns = [[
-            {field: 'projectnum', title: '项目编号', width: 260, formatter: function (value, row, index) {
+            {field: 'projectnum', title: '项目编号', width: 220, formatter: function (value, row, index) {
                     return row.project.projectnum;
                 }},
-            {field: 'itemname', title: '项目名称', width: 200, formatter: function (value, row, index) {
+            {field: 'itemname', title: '项目名称', width: 160, formatter: function (value, row, index) {
                     return row.project.itemname;
                 }},
-            {field: 'shortname', title: '供应商', width: 160, formatter: function (value, row, index) {
+            {field: 'shortname', title: '供应商', width: 100, formatter: function (value, row, index) {
                     return row.supplier.shortname;
                 }},
             {
-                field: '-', title: '投标文件下载', width: 100, formatter: function (value, row, index) {
+                field: '-', title: '投标文件下载', width: 120, formatter: function (value, row, index) {
                     return '<a href="/download/downloadFiles/' + row.id + '/1.do">投标文件下载</a>';
                 }
             },
             {
-                field: '--', title: '采购清单报价文件下载', width: 100, formatter: function (value, row, index) {
+                field: '--', title: '采购清单报价文件下载', width: 150, formatter: function (value, row, index) {
                     return '<a href="/download/downloadFiles/' + row.id + '/2.do">采购清单报价文件下载</a>';
                 }
             },
             {
-                field: '---', title: '其他补充文件', width: 100, formatter: function (value, row, index) {
+                field: '---', title: '其他补充文件下载', width: 120, formatter: function (value, row, index) {
                     return '<a href="/download/downloadFiles/' + row.id + '/3.do">其他补充文件下载</a>';
                 }
             },
             {
                 field: '----',
                 title: '操作',
-                width: 150,
+                width: 80,
                 formatter: function (value, row, index) {
                     return '<a href="javascript:void(0)" onclick="goToScore(' + row.project.id + ',' + row.supplier.id + ',\'' + row.supplier.companyname + '\')">去评分</a>';
                 }

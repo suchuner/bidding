@@ -65,7 +65,7 @@
 											<input type="button" class="btn-red-center" value="登　录" name="login_submit" onClick="doLogin();"></span></a>
 					                    </p>
 										<div class="mt20 ac">
-							               <a href="http://ztb.skshu.com.cn:80/website/forgotPwd.jsp" class="c_blue password-retake1">忘记登录密码？</a>
+							               <a href="" class="c_blue password-retake1"></a>
 							            </div>
 			                		</form>
 			            		</div>

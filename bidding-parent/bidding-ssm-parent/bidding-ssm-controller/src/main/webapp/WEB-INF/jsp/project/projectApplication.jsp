@@ -51,8 +51,6 @@
 <body>
     <div id="content" class="fn-clear">
         <div class="ui-user-form" style="padding: 1px">
-            <h3 class="ui-user-type"><span><b>招标项目申请</b></span>
-            </h3>
             <form id="dForm" method="post" name="dForm" enctype="multipart/form-data"
                   action="/project/addProject.do">
                 <div class="ui-user-information">
@@ -62,15 +60,15 @@
                         <tr class="tr_style">
                             <td class="key"><em style="color: red;">*</em>项目名称:</td>
                             <td class="value">
-                                <input class="easyui-validatebox input_public" data-options="required:true"
+                                <input class=" input_public" data-options="required:true"
                                        type="text" style="width: 250px" name="itemname" id="itemname" value="">
                             </td>
                         </tr>
                         <tr class="tr_style" style="vertical-align: top;">
-                            <td class="key"><em style="color: red;">*</em>项目简介:<br/><em style="color: red;">(注：项目简介不能超过500个字数)</em>
+                            <td class="key"><em style="color: red;">*</em>项目简介:<br/>
                             </td>
                             <td class="value">
-                                        <textarea class="easyui-validatebox" name="introduction" id="introduction"
+                                        <textarea  name="introduction" id="introduction"
                                                   data-options="required:true"
                                                   style="width: 250px;height: 100px"></textarea>
                             </td>
@@ -102,7 +100,7 @@
                     </table>
                 </div>
                 <span class="ui-user-btn">
-				<input type="button" value="" id="form_submit" class="sub" onclick="submitForm()">
+				<input type="button" value="提交申请" id="form_submit" onclick="submitForm()">
 			</span>
             </form>
         </div>

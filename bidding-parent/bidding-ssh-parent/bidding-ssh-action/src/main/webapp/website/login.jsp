@@ -45,14 +45,6 @@
             <div id="logo" class="fn-left">
                 <a href="javascript:void(0);"></a>
             </div>
-            <div class="fn-right" id="headernav">
-                <div class="headernav-item">
-                    <a href="/website/login.jsp" class="headernav-item-btn"><span
-                            class="icon-16 icon-16-login"></span>登录</a>
-                    <a href="/website/reg.jsp" class="headernav-item-btn"><span
-                            class="icon-16 icon-16-register"></span>注册</a>
-                </div>
-            </div>
         </div>
     </div>
     <div id="content" class="main-content fn-clear">
@@ -78,20 +70,13 @@
                             </p>
                             <div class="mt20 ac">
                                 <a href=""
-                                   class="c_blue password-retake1">忘记登录密码？</a>
+                                   class="c_blue password-retake1"></a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="l pt30"></div>
-        </div>
-    </div>
-    <div id="footer">
-        <div class="foot fn-clear">
-            <div class="foot-logo fn-left">
-                <a href="javascript:void(0);"></a>
-            </div>
         </div>
     </div>
 </div>

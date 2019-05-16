@@ -27,20 +27,9 @@
     <!-- home page --> 
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
     <div class="homepage rotate">
-    <a href="#">Back to homepage</a> 
+    <a href="#"></a>
     </div> <!-- home page --> 
-    </div> <!-- social-icons --> 
-    <div class="social">
-    <ul class="social-icons">
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/forrst.png" alt="Forrst" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/dribbble.png" alt="Dribbble" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/deviantart.png" alt="DeviantArt" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/flickr.png" alt="Flickr" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/twitter.png" alt="Twitter" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/facebook.png" alt="Facebook" /></a></li>
-    <li><a href="#"><img src="${pageContext.request.contextPath}/_images/skype.png" alt="Skype" /></a></li>
-    </ul> 
-    </div> 
+    </div> <!-- social-icons -->
     <!-- social-icons --> 
     </div>
 </body>

@@ -103,11 +103,13 @@
             if(_notice!=='null'&&_notice!==""){
                 $.messager.confirm('警告','你已经添加了项目公告了,是否要进行修改?',function (yes) {
                     if(yes){
+                        $('#_noticeForm')[0].reset();
                         $('#id').val(id);
                         $('#noticeDlg').dialog('open');
                     }
                 });
             }else{
+            $('#_noticeForm').get(0).reset();
             $('#id').val(id);
             $('#noticeDlg').dialog('open');
             }
@@ -136,6 +138,10 @@
         function submitNotice(){
             if($("[name='deadline']").val()===""){
                 $.messager.alert('提示','项目报名截止日期还未填入!','info');
+                return;
+            }
+            if($("[name='margin']").val()===""){
+                $.messager.alert('提示','需缴纳的保证金金额还未填入!','info');
                 return;
             }
             if($("[name='noticeMessage']").val()===""){
@@ -171,8 +177,10 @@
     <form id='_noticeForm' action="/project/addBiddingNotice.do" method="post">
         <input type='hidden' id='id' name="id"/>
         <em style="color: red;">*</em>  项目报名截止时间:
-        <input id="_deadline" type="text" class="easyui-datebox" required="required" id="_deadline" name="deadline"/><br>
-        <textarea class="easyui-validatebox" name="noticeMessage" id="notice"
+        <input id="_deadline" type="text" class="easyui-datebox"   name="deadline"/><br>
+        <em style="color: red;">*</em>投标需缴纳的保证金金额（单位:人民币/元）:
+        <input id="margin" type="number"  name="margin"/><br>
+        <textarea class="" name="noticeMessage" id="notice"
                   data-options="required:true"
                   style="width: 560px;height: 260px"></textarea>
     </form>

@@ -24,7 +24,7 @@ $(function(){
 });
 function showMenus(){
 	$.ajax({
-		url:'menu_getMenusTree',
+		url:'',
 		type:'post',
 		dataType:'json',
 		success:function(rtn){
@@ -50,7 +50,7 @@ $(function(){
 })
 function showName(){
 	$.ajax({
-		url:'login_showName',
+		url:'',
 		dataType:'json',
 		type:'post',
 		success:function(rtn){

@@ -34,7 +34,7 @@ public class SupplierService implements ISupplierService {
 
     public void addSupplier(Supplier supplier) throws Exception {
         //取公司的电话进行md5转换,然后取生成的字符串的前12位转换为大写作为生成的供应商密码
-        String genPassword = DigestUtils.md5DigestAsHex(supplier.getCallnum().getBytes()).substring(0, 11).toUpperCase();
+        String genPassword = DigestUtils.md5DigestAsHex(supplier.getCallnum().getBytes()).substring(0, 12).toUpperCase();
         String password = DigestUtils.md5DigestAsHex(genPassword.getBytes());
         supplier.setPassword(password);
         //设置供应商账户未激活
@@ -78,7 +78,7 @@ public class SupplierService implements ISupplierService {
             ssm.setSubject("恭喜你注册成功");
             StringBuffer buffer = new StringBuffer("贵公司在本招标网站的登录账号为:");
             buffer.append(supplier.getCompanyemail());
-            String genPassword = DigestUtils.md5DigestAsHex(supplier.getCallnum().getBytes()).substring(0, 11).toUpperCase();
+            String genPassword = DigestUtils.md5DigestAsHex(supplier.getCallnum().getBytes()).substring(0, 12).toUpperCase();
             buffer.append(",初始登录密码为:");
             buffer.append(genPassword);
             buffer.append(".感谢您的注册,xxx招标系统");

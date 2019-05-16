@@ -20,9 +20,9 @@
 	<action name="supplier_*" class="supplierAction" method="{1}">
 		<interceptor-ref name="defaultStack">
         <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔-->
- 	<!-- <param name="fileUpload.allowedExtensions">jpg,jpeg</param>-->
+ 	<!-- <param name="fileUpload.allowedExtensions">jpg,jpeg,png</param>-->
         <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔 -->
-      <param name="fileUpload.allowedTypes">image/jpeg</param>
+      <param name="fileUpload.allowedTypes">image/jpeg,image/png</param>
      </interceptor-ref>
 		<result name="toLoginPage">/website/login.jsp</result>
 		<result name="toMyInfoPage">WEB-INF/jsp/myInfo_supplier.jsp</result>

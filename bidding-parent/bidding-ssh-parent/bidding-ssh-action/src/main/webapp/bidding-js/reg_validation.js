@@ -1,17 +1,40 @@
 /*除手机,邮件做非空和格式校验,公司网址不做校验外,其余都做非空校验*/
 function submitForm(){
+    /*----------------邮箱校验--------------------*/
+    var reg_email=/^([a-z]|[0-9])+@([a-z]|[0-9])+\.+([a-z]|[0-9])+$/i;
+
+
     if($('#link_man').val().trim()===""){
         $.messager.alert('提示','联系人不能为空!',"info");
         return;
     }
-    if($('#link_tel').val().trim()===""){
+    var tel = $('#link_tel').val();
+    if(tel.trim()===""){
         $.messager.alert('提示','联系人手机不能为空!',"info");
         return;
     }
-    if($('#link_email').val().trim()===""){
+    /*---------------联系人手机号码校验---------------*/
+    var phone =tel.trim();
+    var reg_phone =/^1+([3-5]|[7-8])+\d{9}$/;
+    if(phone.length!==11){
+        $.messager.alert('提示','手机号码长度错误!请检查后重试!',"info");
+        return;
+    }
+    if(!reg_phone.test(phone)){
+        $.messager.alert('提示','手机号码格式错误!请检查后重试!',"info");
+        return;
+    }
+    var email = $('#link_email').val();
+    if(email.trim()===""){
         $.messager.alert('提示','联系人邮箱不能为空!',"info");
         return;
     }
+   //--------------------------------------------------------------
+    if(!reg_email.test(email.trim())){
+        $.messager.alert('提示','邮箱格式不正确!正确格式为*****@****.****;例如:123@qq.com',"info");
+        return;
+    }
+    //--------------------------------------------------------------
     if($('#comp_name').val().trim()===""){
         $.messager.alert('提示','公司名称不能为空!',"info");
         return;
@@ -44,10 +67,18 @@ function submitForm(){
         $.messager.alert('提示','公司电话不能为空!',"info");
         return;
     }
-    if($('#comp_email').val().trim()===""){
-        $.messager.alert('提示','公司邮件不能为空!',"info");
+    var c_email=$('#comp_email').val();
+    if(c_email.trim()===""){
+        $.messager.alert('提示','公司邮箱账号不能为空!',"info");
         return;
     }
+    //------------------------------------------------------
+    //公司邮箱校验
+    if(!reg_email.test(c_email.trim())){
+        $.messager.alert('提示','邮箱格式不正确!正确格式为*****@****.****;例如:123@qq.com',"info");
+        return;
+    }
+    //--------------------------------------------------------
     if($('*[name="supplier.typeid"]').val().trim()==="-"){
         $.messager.alert('提示','公司性质不能为空!',"info");
         return;
@@ -97,28 +128,8 @@ function submitForm(){
         $.messager.alert('提示','组织机构代码证附件未上传!',"info");
         return;
     }
-    /*----------------邮箱校验--------------------*/
-    var reg_email=/^([a-z]|[0-9])+@([a-z]|[0-9])+\.+([a-z]|[0-9])+$/i;
-    if(!reg_email.test($('#link_email').val().trim())){
-         $.messager.alert('提示','邮箱格式不正确!正确格式为*****@****.****;例如:123@qq.com',"info");
-         return;
-    }
-    if(!reg_email.test($('#comp_email').val().trim())){
-         $.messager.alert('提示','邮箱格式不正确!正确格式为*****@****.****;例如:123@qq.com',"info");
-         return;
-    }
-    /*---------------手机号码校验---------------*/
-    var phone = $('#link_tel').val().trim();
-    var reg_phone =/^1+([3-5]|[7-8])+\d{9}$/;
-    if(phone.length!==11){
-        $.messager.alert('提示','手机号码长度错误!请检查后重试!',"info");
-        return;
-    }
-    if(!reg_phone.test(phone)){
-        $.messager.alert('提示','手机号码格式错误!请检查后重试!',"info");
-        return;
-    }
-    $.messager.confirm('警告','请确认公司邮箱是否正确;公司邮箱:'+$('#comp_email').val(),function(yes){
+
+    $.messager.confirm('警告','请确认公司邮箱是否正确;公司邮箱:'+c_email,function(yes){
         if(yes){
             $('#dForm').ajaxSubmit(function(info){
                 $.messager.alert("提示",eval("("+info+")").retMessage,"info",function () {

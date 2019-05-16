@@ -175,11 +175,11 @@ public class EnrollService implements IEnrollService {
             StringBuffer buffer = new StringBuffer("尊敬的");
             buffer.append(supplier.getCompanyname());
             buffer.append(",贵公司于'");
-            buffer.append(enroll.getEnrolldate().toLocaleString());
+            buffer.append(enroll.getEnrolldate().toLocaleString().replace("0:00:00",""));
             buffer.append("'报名投标的项目(");
             buffer.append(project.getItemname());
             buffer.append(")已通过该项目的报名审核,请于报名截止日期之后,项目竞标日期前两天缴纳投标保证金参与竞标,应缴纳的保证金金额为");
-            buffer.append(MARGIN_CASH);
+            buffer.append(project.getBid());
             buffer.append("(人民币/元);xxx招标系统");
             sm.setText(buffer.toString());
             sm.setFrom(emailAccount);

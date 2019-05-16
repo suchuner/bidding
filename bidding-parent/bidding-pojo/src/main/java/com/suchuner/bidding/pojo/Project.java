@@ -94,6 +94,7 @@ public class Project implements Serializable{
 
     private Date enddate;
 
+    /*该字段暂用于保存招标项目的需缴纳的保证金金额*/
     private Long bid;
 
     private Byte isbegin;

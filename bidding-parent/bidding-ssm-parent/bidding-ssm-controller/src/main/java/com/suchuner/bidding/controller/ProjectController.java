@@ -115,7 +115,7 @@ public class ProjectController {
      * @throws Exception
      */
     @RequestMapping(value = "/project/addBiddingNotice",method = RequestMethod.POST)
-    public void addBiddingNotice(Long id,String noticeMessage,Date deadline,HttpServletRequest request,HttpServletResponse response) throws Exception {
+    public void addBiddingNotice(Long id,String noticeMessage,Date deadline,Long margin,HttpServletRequest request,HttpServletResponse response) throws Exception {
         String loginToken = CookieUtils.getCookieValue(request, "BIDDING_SYSTEM_USER", true);
         TbUser user = projectService.getLoginUserByLoginToken(loginToken);
         if(user==null){
@@ -123,7 +123,7 @@ public class ProjectController {
             return;
         }
         try {
-            projectService.addBiddingNotice(id,noticeMessage,deadline);
+            projectService.addBiddingNotice(id,noticeMessage,deadline,margin);
             CommonUtils.returnMessages(response,true,"添加招标公告成功!");
         } catch (Exception e) {
             e.printStackTrace();

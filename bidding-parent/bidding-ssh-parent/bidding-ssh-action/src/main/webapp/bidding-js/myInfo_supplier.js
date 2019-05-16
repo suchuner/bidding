@@ -28,7 +28,7 @@ $(function(){
 });
 function showMenus(){
 	$.ajax({
-		url:'menu_getMenusTree',
+		url:'',
 		type:'post',
 		dataType:'json',
 		success:function(rtn){

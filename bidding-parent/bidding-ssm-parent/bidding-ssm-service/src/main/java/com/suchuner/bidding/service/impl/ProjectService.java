@@ -197,7 +197,7 @@ public class ProjectService implements IProjectService {
         return loginUser;
     }
 
-    public void addBiddingNotice(Long pid, String noticeMessage, Date deadline) throws Exception {
+    public void addBiddingNotice(Long pid, String noticeMessage, Date deadline, Long margin) throws Exception {
         Project project = getProjectByPid(pid);
         if(project.getStatus()==Project.STATUS_CHECK_YES_PASS_YES){
         project.setNotice(noticeMessage);
@@ -207,6 +207,7 @@ public class ProjectService implements IProjectService {
         calendar.add(Calendar.DAY_OF_MONTH,1);
         Date time = calendar.getTime();
         project.setDeadline(time);
+        project.setBid(margin);
         projectMapper.updateByPrimaryKeySelective(project);
         if(project.getIsrebidding()==Project.IS_REBIDDING_YES){
             List<Enroll> enrolls = enrollService.selectProjectToCheckByPid(pid);

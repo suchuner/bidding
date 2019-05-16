@@ -65,7 +65,7 @@
             {
                 field: '----',
                 title: '操作',
-                width: 150,
+                width: 222,
                 formatter: function (value, row, index) {
                     return '<a href="javascript:void(0)" onclick="goTodoScoreJudgePage(' + row.id + ',' + row.isbegin + ')">为该项目的投标供应商进行分值判断</a>';
                 }
@@ -154,8 +154,8 @@
         $(function () {
             $('#doScoreJudgeDlg').dialog({
                 title: "供应商评分判断",
-                width: 600,
-                height: 400,
+                width: 1000,
+                height: 600,
                 closed: true,
                 modal: true
             });

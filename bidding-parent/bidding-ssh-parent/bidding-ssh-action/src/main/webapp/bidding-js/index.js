@@ -18,11 +18,11 @@ var _menus={
 						{"icon":"icon-sys","menuid":"104","menuname":"查询未通过审核的招标项目","url":"http://localhost:8080/project/toProjectPage/2.do"},
 						{"icon":"icon-sys","menuid":"105","menuname":"发布招标项目","url":"http://localhost:8080/project/toProjectPage/3.do"},
 						{"icon":"icon-sys","menuid":"106","menuname":"审核供应商项目报名","url":"http://localhost:8080/enroll/toCheckEnrollPage/0.do"},
-						{"icon":"icon-sys","menuid":"107","menuname":"审核供应商项目保证金提交文件","url":"http://localhost:8080/bidding/toBiddingPage/0.do"},
-						{"icon":"icon-sys","menuid":"108","menuname":"查看供应商数量是否达到竞标条件","url":"http://localhost:8080/project/toProjectPage/5.do"},
-						{"icon":"icon-sys","menuid":"109","menuname":"为竞标项目随机抽取评标人","url":"http://localhost:8080/project/toProjectPage/6.do"},
-						{"icon":"icon-sys","menuid":"110","menuname":"为竞标项目做供应商分值判断","url":"http://localhost:8080/bidding/toBiddingPage/2.do"},
-						{"icon":"icon-sys","menuid":"111","menuname":"为竞标项目选出最优供应商或再次进行投标","url":"http://localhost:8080/bidding/toBiddingPage/3.do"}
+						{"icon":"icon-sys","menuid":"107","menuname":"审核供应商保证金文件","url":"http://localhost:8080/bidding/toBiddingPage/0.do"},
+						{"icon":"icon-sys","menuid":"108","menuname":"供应商数量是否达到竞标条件","url":"http://localhost:8080/project/toProjectPage/5.do"},
+						{"icon":"icon-sys","menuid":"109","menuname":"随机抽取评标人","url":"http://localhost:8080/project/toProjectPage/6.do"},
+						{"icon":"icon-sys","menuid":"110","menuname":"做供应商分值判断","url":"http://localhost:8080/bidding/toBiddingPage/2.do"},
+						{"icon":"icon-sys","menuid":"111","menuname":"选出最优供应商或再次进行投标","url":"http://localhost:8080/bidding/toBiddingPage/3.do"}
 
 					]
 			 	}
@@ -35,7 +35,7 @@ $(function(){
 });
 function showMenus(){
 	$.ajax({
-		url:'menu_getMenusTree',
+		url:'',
 		type:'post',
 		dataType:'json',
 		success:function(rtn){

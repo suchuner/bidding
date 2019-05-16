@@ -37,8 +37,9 @@ public interface IProjectService {
      * @param pid
      * @param noticeMessage
      * @param deadline
+     * @param margin
      */
-     void addBiddingNotice(Long pid, String noticeMessage, Date deadline) throws Exception;
+     void addBiddingNotice(Long pid, String noticeMessage, Date deadline, Long margin) throws Exception;
 
     /**
      * @param project

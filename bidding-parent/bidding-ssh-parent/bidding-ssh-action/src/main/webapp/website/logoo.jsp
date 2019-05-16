@@ -37,8 +37,7 @@
 <title>系统用户登录</title>
 </head>
 <body class="logobg_style">
-	<div id="large-header" class="large-header login-page">
-		<canvas id="demo-canvas" width="1590" height="711"></canvas>
+	<div id="large-header" class=" login-page">
 		<div class="login-form">
 			<div class="login-content">
 				<h1 class="title_name">系统账户登录</h1>
@@ -63,7 +62,7 @@
 						</div>
 					</div>
 					<div class=" textright">
-						<a href="" class="forget">忘记密码？</a>
+						<a href="" class="forget"></a>
 					</div>
 					<div class="tishi"></div>
 					<div class="form-group">

@@ -103,7 +103,7 @@
 	{
 		field : '----',
 		title : '操作',
-		width : 100,
+		width : 160,
 		formatter: function(value,row,index){
 			var rtn='<a href="javascript:void(0)" onclick="pass_yes_no('+row.id+',0)">通过审核</a>';
 			rtn+='   <a href="javascript:void(0)" onclick="pass_yes_no('+row.id+',1)">不通过审核</a>';
@@ -174,7 +174,7 @@
 	<div id='messageDlg'>
 		<input type="hidden" id="id">
 		<em style="color: red;">*</em>  审核不通过原因:
-		<textarea class="easyui-validatebox" name="message" id="notice"
+		<textarea class="" name="message" id="notice"
 				  data-options="required:true"
 				  style="width: 560px;height: 260px"></textarea>
 	</div>

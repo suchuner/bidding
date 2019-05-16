@@ -87,16 +87,16 @@ public class EnrollController {
             }
         }
         enroll.setSupId(supplier.getId());
-        if(!legaldoc_.getContentType().equals("image/jpeg")){
-            CommonUtils.returnMessages(response,false,"无违法记录证明文件上传文件格式错误(请上传图片  *.jpg)!");
+        if(!legaldoc_.getContentType().equals("application/pdf")){
+            CommonUtils.returnMessages(response,false,"无违法记录证明文件上传文件格式错误(请上传图片  *.pdf)!");
             return;
         }
-        if(!taxdoc_.getContentType().equals("image/jpeg")){
-            CommonUtils.returnMessages(response,false,"纳税证明文件上传文件格式错误(请上传图片  *.jpg)!");
+        if(!taxdoc_.getContentType().equals("application/pdf")){
+            CommonUtils.returnMessages(response,false,"纳税证明文件上传文件格式错误(请上传图片  *.pdf)!");
             return;
         }
-        if(!sidoc_.getContentType().equals("image/jpeg")){
-            CommonUtils.returnMessages(response,false,"员工社保缴纳证明文件上传文件格式错误(请上传图片  *.jpg)!");
+        if(!sidoc_.getContentType().equals("application/pdf")){
+            CommonUtils.returnMessages(response,false,"员工社保缴纳证明文件上传文件格式错误(请上传图片  *.pdf)!");
             return;
         }
         File descFile =null;

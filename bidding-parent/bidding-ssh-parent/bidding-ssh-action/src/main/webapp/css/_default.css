@@ -23,7 +23,7 @@ a:hover{ color:Red; text-decoration:underline;}
 .third_ul{ list-style-type:none;margin:0px; padding:0px; display:none;}
 .third_ul li{ padding-left:20px;}
 
-.icon{ background:url(../images/tabicons.png) no-repeat;width:18px; line-height:18px; display:inline-block;}
+.icon{ background:no-repeat;width:18px; line-height:18px; display:inline-block;}
 .icon-sys{ background-position:0px -200px;}
 .icon-set{ background-position:-380px -200px;}
 .icon-add{background-position: -20px 0px;}
@@ -40,4 +40,4 @@ a:hover{ color:Red; text-decoration:underline;}
 .icon-database{ background-position:-20px -140px;}
 
 
-.icon-arrow{ background:url('../images/arrow.gif') no-repeat right;}
+.icon-arrow{ background:no-repeat right;}

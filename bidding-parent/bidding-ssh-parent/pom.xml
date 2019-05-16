@@ -173,17 +173,6 @@
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.suchuner</groupId>
-            <artifactId>bidding-pojo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.suchuner</groupId>
-            <artifactId>bidding-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>com.suchuner</groupId>
             <artifactId>bidding-interface-service</artifactId>

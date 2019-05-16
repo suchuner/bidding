@@ -23,13 +23,9 @@
     <!-- home page --> 
     <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
     <div class="homepage rotate">
-    <a href="#">Back to homepage</a> 
+    <a href="#"></a>
     </div> <!-- home page --> 
-    </div> <!-- social-icons --> 
-    <div class="social">
-    <ul class="social-icons">
-    </ul> 
-    </div>
+    </div> <!-- social-icons -->
     </div>
 </body>
 </html>

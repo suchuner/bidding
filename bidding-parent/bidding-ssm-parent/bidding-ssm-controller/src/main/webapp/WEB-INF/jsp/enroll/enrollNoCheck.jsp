@@ -66,7 +66,7 @@
                     return '<a href="javascript:void(0)" onclick="checkEnroll(' + row.id + ')">去审核供应商报名</a>';
                 }
             }
-        ]]
+        ]];
         var _columns = [[
             {field: 'id', title: '编号', width: 100},
             {field: 'companyname', title: '供应商', width: 100,formatter:function (value,row,index) {
@@ -130,8 +130,8 @@
     <script type="text/javascript">
         $(function (){$('#enrollDlg').dialog({
             title: "审核供应商报名",
-            width: 1000,
-            height: 400,
+            width: 1300,
+            height: 600,
             closed: true,
             modal: true
         });});
@@ -216,7 +216,7 @@
     <input type="hidden" id="pid">
     <input type="hidden" id="sid">
     <em style="color: red;">*</em>  审核不通过原因:
-    <textarea class="easyui-validatebox" name="message" id="notice"
+    <textarea  name="message" id="notice"
               data-options="required:true"
               style="width: 560px;height: 260px"></textarea>
 </div>

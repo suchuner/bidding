@@ -44,32 +44,14 @@
             </div>
             <div id="content" class="fn-clear">
                 <div class="ui-user-form" style="padding: 1px">
-                    <h3 class="ui-user-type"><span><b>企业用户</b></span>
-                        <small><b>非常欢迎您注册为企业用户</b></small>
+                    <h3 class="">
+                        <span><b>非常欢迎您注册为企业用户</b></span>
                     </h3>
                     <br>
                     <b style="color: red;font-size: 22px">*注意:此表单带*都为必填项!*</b>
                     <form id="dForm" method="post" name="dForm" enctype="multipart/form-data"
                           action="/supplier_addSupplier.action">
                         <div class="ui-user-information">
-                            <!-- <h4 class="ui-form-title"><span><b>用户信息</b><i>User Information</i></span></h4>
-                             <table style="width: 780px;">
-                                 <tbody>
-                                     <tr class="tr_style">
-                                         <td class="key">邮  箱:</td>
-                                         <td class="value">
-                                              <input class="easyui-validatebox input_public" data-options="required:false" type="text" id="email" validType="email" style="width: 250px" name="supplier.companyemail" value="" >
-                                         </td>
-                                     </tr>-->
-                            <!-- <tr class="tr_style">
-                                 <td class="key"><em style="color: red;">*</em>验证码:</td>
-                                 <td class="value">
-                                      <input class="easyui-validatebox input_public" data-options="required:true" type="text" id="checkcode" name="supplier.checkcode" style="width: 100px" >
-                                      <img id="certCodeImg" alt="点击更换验证码" style="margin-bottom: -5px;" src="../certCode" align="top" href="#certCodeImg" onclick="document.getElementById('certCodeImg').src='../certCode?'+Math.random();"/>
-                                 </td>
-
-                             </tr>-->
-                            </tbody></table>
                         </div>
                         <div class="ui-user-information">
                             <h4 class="ui-form-title"><span><b>联系人信息</b></span></h4>
@@ -78,7 +60,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>联系人:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="link_man" name="supplier.linkman" style="width: 250px"
                                                value="">
                                     </td>
@@ -86,8 +68,8 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>手 机:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public"
-                                               data-options="required:true,validType:['mobile','validTel']" type="text"
+                                        <input class=" input_public"
+                                               data-options="required:true" type="text"
                                                id="link_tel" name="supplier.phone" style="width: 250px" maxlength="11"
                                                value="">
                                     </td>
@@ -97,7 +79,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>电子邮箱:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="link_email" validType="email" name="supplier.linkmanemail"
                                                style="width: 250px" value="">
                                     </td>
@@ -112,7 +94,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>公司名称:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="comp_name" name="supplier.companyname"
                                                style="width: 250px" value="">
                                     </td>
@@ -120,7 +102,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>公司简称:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="comp_shortname" name="supplier.shortname"
                                                style="width: 250px" value="">
                                     </td>
@@ -128,16 +110,16 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>公司地址:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="comp_addr" name="supplier.address" style="width: 250px"
                                                value="">
                                     </td>
                                 </tr>
                                 <tr class="tr_style" style="vertical-align: top;">
-                                    <td class="key"><em style="color: red;">*</em>公司简介:<br/><em style="color: red;">(注：公司简介不能超过500个字数)</em>
+                                    <td class="key"><em style="color: red;">*</em>公司简介:<br/>
                                     </td>
                                     <td class="value">
-                                        <textarea class="easyui-validatebox" name="supplier.introduction"
+                                        <textarea class="" name="supplier.introduction"
                                                   id="comp_intro" data-options="required:true"
                                                   style="width: 250px;height: 100px"></textarea>
                                     </td>
@@ -145,7 +127,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>注册资金(万元):</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="number" id="regist_money" name="supplier.regfund"
                                                validType="intOrFloat" style="width: 250px" value="">
                                     </td>
@@ -153,7 +135,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>法人代表:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="comp_boss" name="supplier.lawperson" style="width: 250px"
                                                value="">
                                     </td>
@@ -169,15 +151,15 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>电 话:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="phone" name="supplier.callnum" style="width: 250px"
-                                               value="">
+                                               value="" maxlength="11">
                                     </td>
                                 </tr>
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>公司邮箱:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="comp_email" validType="email"
                                                name="supplier.companyemail" style="width: 250px" value="">
                                         <br/><label style="color: red">（注：邮箱要填写正确，帐号及密码等后续相关通知类信息是通过邮箱发送）</label>
@@ -186,7 +168,7 @@
                                 <tr class="tr_style">
                                     <td class="key">公司网址:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:false"
+                                        <input class=" input_public" data-options="required:false"
                                                type="text" id="comp_website" name="supplier.website"
                                                style="width: 250px" value="">
                                     </td>
@@ -211,7 +193,7 @@
                                     <td class="key" style="vertical-align: top;"><em style="color: red;">*</em>经营范围:
                                     </td>
                                     <td class="value">
-                                        <textarea class="easyui-validatebox " data-options="required:true"
+                                        <textarea class=" " data-options="required:true"
                                                   name="supplier.frame" id="business_scope"
                                                   style="width: 250px; height: 100px;"></textarea>
                                     </td>
@@ -226,7 +208,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>营业执照注册号:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="business_license" validType="validYyzz"
                                                style="width: 250px;" name="supplier.bizlicregnum" value="">
                                     </td>
@@ -244,8 +226,7 @@
                                     <td class="key"><em style="color: red;">*</em>营业执照附件:</td>
                                     <td class="value">
                                         <input type="file" name="bizLicDoc" id="file_business_license_file"
-                                               style="float: left; vertical-align:middle;"
-                                               onchange="uploadColorImg('business_license_file');"/>&nbsp;
+                                               style="float: left; vertical-align:middle;"/>&nbsp;
                                         <div id="imgName_business_license_file"
                                              style="float: left; vertical-align:middle;"></div>
                                     </td>
@@ -253,7 +234,7 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>税务登记证号:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="tax_reg" style="width: 250px;" name="supplier.taxregnum"
                                                value="">
                                     </td>
@@ -271,8 +252,7 @@
                                     <td class="key"><em style="color: red;">*</em>税务登记证附件:</td>
                                     <td class="value">
                                         <input type="file" name="taxRegDoc" id="file_tax_reg_file"
-                                               style="float: left; vertical-align:middle;"
-                                               onchange="uploadColorImg('tax_reg_file');"/>&nbsp;
+                                               style="float: left; vertical-align:middle;"/>&nbsp;
                                         <div id="imgName_tax_reg_file"
                                              style="float: left; vertical-align:middle;"></div>
                                     </td>
@@ -280,22 +260,10 @@
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>组织机构代码:</td>
                                     <td class="value">
-                                        <input class="easyui-validatebox input_public" data-options="required:true"
+                                        <input class=" input_public" data-options="required:true"
                                                type="text" id="organization" style="width: 250px;"
                                                name="supplier.orgcode" value="">
                                     </td>
-                                    <td class="tip">
-                                        <div id="orgCertTip" class="onShow"
-                                             style="margin: 0px; padding: 0px; background: transparent;"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="key"></td>
-                                    <td>
-                                        <div style="padding-left: 10px;color: #666">示例:00000000-0,检验码为字母时,必须大写</div>
-                                    </td>
-                                    <td class="tip"></td>
-                                </tr>
                                 <tr class="tr_style">
                                     <td class="key"><em style="color: red;">*</em>组织机构代码有效截止日期:</td>
                                     <td class="value">
@@ -308,18 +276,15 @@
                                     <td class="key"><em style="color: red;">*</em>组织机构代码证附件:</td>
                                     <td class="value">
                                         <input type="file" name="orgCodeDoc" id="file_organization_file"
-                                               style="float: left; vertical-align:middle;"
-                                               onchange="uploadColorImg('organization_file');"/>&nbsp;
-                                        <div id="imgName_organization_file"
-                                             style="float: left; vertical-align:middle;"></div>
+                                               style="float: left; vertical-align:middle;"/>&nbsp;
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                         <span class="ui-user-btn">
-				<input type="button" value="" id="form_submit" class="sub" onclick="submitForm()">
-				<input type="reset" value=""  class="res">
+				<input type="button"  id="form_submit" value="提交注册信息" onclick="submitForm()">
+				<input type="reset"  value="重置注册信息">
 			</span>
                     </form>
                 </div>
