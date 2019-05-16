@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="bidding-ssh-action:war">
-    <output-path>$PROJECT_DIR$/bidding-parent/bidding-ssh-parent/bidding-ssh-action/target</output-path>
-    <root id="archive" name="bidding-ssh-action.war">
-      <element id="artifact" artifact-name="bidding-ssh-action:war exploded" />
-    </root>
-  </artifact>
-</component>

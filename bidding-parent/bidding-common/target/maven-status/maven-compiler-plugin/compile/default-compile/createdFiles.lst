@@ -1,7 +1,0 @@
-com\suchuner\bidding\common\exception\BiddingException.class
-com\suchuner\bidding\common\utils\CookieUtils.class
-com\suchuner\bidding\common\utils\DirFileMakeUtil.class
-com\suchuner\bidding\common\utilpojo\BiddingFileType.class
-com\suchuner\bidding\common\utilpojo\BiddingResultBean.class
-com\suchuner\bidding\common\utilpojo\PageBean.class
-com\suchuner\bidding\common\utils\JsonUtils.class

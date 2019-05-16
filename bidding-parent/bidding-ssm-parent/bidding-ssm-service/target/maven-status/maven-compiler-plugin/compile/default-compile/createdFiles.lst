@@ -1,7 +1,0 @@
-com\suchuner\bidding\service\jedis\JedisClient.class
-com\suchuner\bidding\service\impl\ProjectService.class
-com\suchuner\bidding\service\impl\BiddingService.class
-com\suchuner\bidding\service\impl\ScoreService.class
-com\suchuner\bidding\service\impl\EnrollService.class
-com\suchuner\bidding\service\jedis\JedisClientPool.class
-com\suchuner\bidding\service\impl\ProjectExpertService.class
