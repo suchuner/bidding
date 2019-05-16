@@ -18,6 +18,16 @@
           <file>file://$MODULE_DIR$/../bidding-ssh-service/src/main/resources/applicationContext_service.xml</file>
           <file>file://$MODULE_DIR$/../bidding-ssh-service/src/main/resources/applicationContext_jedis.xml</file>
         </fileset>
+        <fileset id="fileset2" name="ApplicationContext_dao" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_dao.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_action.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_datasource.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_dubbo.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_jedis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_jmail.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_service.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext_tx.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
